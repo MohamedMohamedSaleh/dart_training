@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main() {
-  getSeason();
+  averageCalculate();
 }
 
 getDaysOfWeek() {
@@ -39,8 +39,8 @@ getMonths() {
 
 getSeason() {
   print("Enter any number from 1 to 12");
-  int num = int.parse(stdin.readLineSync()!);
-  if (num == null || num < 1 || num > 12) {
+  int? num = int.parse(stdin.readLineSync()!);
+  if (num < 1 || num > 12) {
     print("Enter validat number from 1 to 12");
   } else {
     switch (num) {
@@ -59,7 +59,7 @@ getSeason() {
       case 8:
         print("summer");
         break;
-      default: 
+      default:
         print("autumn");
     }
   }
@@ -167,4 +167,67 @@ getTypeNum() {
   } else {
     print("zero");
   }
+}
+//////////////////////////////////////////////////////////////////////
+
+sumCalculate() {
+  stdout.write("enter start number: ");
+  int start = int.parse(stdin.readLineSync()!);
+  stdout.write("enter end number: ");
+
+  int end = int.parse(stdin.readLineSync()!);
+  int sum = 0;
+  for (int i = start; i <= end; i++) {
+    sum += i;
+  }
+  print(sum);
+}
+
+factorCalculate() {
+  stdout.write("enter start number: ");
+  int start = int.parse(stdin.readLineSync()!);
+  stdout.write("enter end number: ");
+
+  int end = int.parse(stdin.readLineSync()!);
+  int factor = 1;
+  for (int i = start; i <= end; i++) {
+    factor *= i;
+  }
+  print(factor);
+}
+
+pyramidOfStars() {
+  stdout.write("enter the height of pyramid: ");
+  int height = int.parse(stdin.readLineSync()!);
+
+  for (int i = 1; i <= height * 2; i += 2) {
+    stdout.write(" " * (((height * 2) - i) / 2).floor());
+    for (int j = 1; j <= i; j++) {
+      stdout.write("*");
+    }
+    print("");
+  }
+}
+
+reversedNumber() {
+  stdout.write("enter the number: ");
+  String num = stdin.readLineSync()!;
+  int number = int.parse(num);
+  for (int i = 0; i < num.length; i++) {
+    stdout.write(number % 10);
+    number ~/= 10;
+  }
+}
+
+averageCalculate() {
+  
+  stdout.write("Enter the length of numbers: ");
+  int length = int.parse(stdin.readLineSync()!);
+  int sum = 0;
+  print("Enter the numbers: ");
+  for (int i = 0; i < length; i++) {
+    int num = int.parse(stdin.readLineSync()!);
+    sum += num;
+  }
+  print((sum / length).round());
 }
