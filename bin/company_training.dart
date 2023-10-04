@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main() {
-  getTypeNum();
+  getSeason();
 }
 
 getDaysOfWeek() {
@@ -40,14 +40,28 @@ getMonths() {
 getSeason() {
   print("Enter any number from 1 to 12");
   int num = int.parse(stdin.readLineSync()!);
-  if (num == 1 || num == 2 || num == 3) {
-    print("winter");
-  } else if (num == 4 || num == 5 || num == 6) {
-    print("spring");
-  } else if (num == 7 || num == 8 || num == 9) {
-    print("summer");
+  if (num == null || num < 1 || num > 12) {
+    print("Enter validat number from 1 to 12");
   } else {
-    print("autumn");
+    switch (num) {
+      case 12:
+      case 1:
+      case 2:
+        print("winter");
+        break;
+      case 3:
+      case 4:
+      case 5:
+        print("spring");
+        break;
+      case 6:
+      case 7:
+      case 8:
+        print("summer");
+        break;
+      default: 
+        print("autumn");
+    }
   }
 }
 
@@ -128,7 +142,6 @@ calculator() {
   }
 }
 
-
 getAge() {
   print("Enter your Age");
   int age = int.parse(stdin.readLineSync()!);
@@ -145,16 +158,13 @@ getAge() {
   }
 }
 
-getTypeNum(){
+getTypeNum() {
   int num = int.parse(stdin.readLineSync()!);
-  if(num>0){
+  if (num > 0) {
     print("positive");
-  }
-  else if (num < 0){
+  } else if (num < 0) {
     print("negative");
-  }
-  else {
+  } else {
     print("zero");
   }
-
 }
