@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main() {
-  averageCalculate();
+  funcRequiredAndOpionWithDefualt("mosdifj");
 }
 
 getDaysOfWeek() {
@@ -229,4 +229,37 @@ averageCalculate() {
     sum += num;
   }
   print((sum / length).round());
+}
+
+//////////////////////////////////////////////////////////////////////
+
+sayHello(String name, [String h = "Hello"]) {
+  print("$h $name");
+}
+
+numIsEvenOrOdd(int num) {
+  if (num % 2 == 0) {
+    print("Even");
+  } else {
+    print("Odd");
+  }
+}
+
+deleteValueFromList(List<int> numbers, int value) {
+  if (numbers.contains(value)) {
+    numbers.remove(value);
+  }
+  print(numbers);
+}
+
+funcRequiredAndOpion(String name, [int? age]) {
+  if (age == null) {
+    print(name);
+  } else {
+    print("$name has age $age");
+  }
+}
+
+funcRequiredAndOpionWithDefualt(String name, [int age = 5]) {
+  print("$name has age $age");
 }
