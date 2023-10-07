@@ -1,9 +1,11 @@
 import 'dart:io';
 
 void main() {
-  funcRequiredAndOpionWithDefualt("mosdifj");
+  longestWords();
 }
 
+//////////////////////////////////////////////////////////////////////////
+//TODO: BASICS
 getDaysOfWeek() {
   Map<int, String> days = {
     1: "sunday",
@@ -168,8 +170,9 @@ getTypeNum() {
     print("zero");
   }
 }
-//////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////
+//TODO: LOOPS
 sumCalculate() {
   stdout.write("enter start number: ");
   int start = int.tryParse(stdin.readLineSync()!) ?? 0;
@@ -232,6 +235,7 @@ averageCalculate() {
 }
 
 //////////////////////////////////////////////////////////////////////
+//TODO: FUNCTIONS
 
 sayHello(String name, [String h = "Hello"]) {
   print("$h $name");
@@ -262,4 +266,97 @@ funcRequiredAndOpion(String name, [int? age]) {
 
 funcRequiredAndOpionWithDefualt(String name, [int age = 5]) {
   print("$name has age $age");
+}
+////////////////////////////////////////
+//TODO:functions (2)
+
+convertTemperature() {
+  int convertToFahrenheit(int celsius) {
+    return (celsius * 9 ~/ 5) + 32;
+  }
+
+  int convertToCelsius(int fahrenheit) {
+    return (fahrenheit - 32) * 5 ~/ 9;
+  }
+
+  void applyConvert({required int oper, required int temp}) {
+    (oper == 1)
+        ? stdout.write(convertToCelsius(temp))
+        : print(convertToFahrenheit(temp));
+  }
+
+//////////////
+  stdout.write("to convert from F to C enter 1 and revers enter 2: ");
+  int operation = int.parse(stdin.readLineSync()!);
+  if (operation < 1 || operation > 2) {
+    print("enter valid number.!");
+    return 0;
+  } else {
+    stdout.write("enter temperature: ");
+    try {
+      int temperature = int.parse(stdin.readLineSync()!);
+      applyConvert(oper: operation, temp: temperature);
+    } catch (_) {
+      print("enter valid temperature");
+    }
+  }
+}
+
+void currency() {
+// required fuction
+  double convertCurrency({required int amount, required String code}) {
+    if (code == "USD" || code == "EGP") {
+      return (code == "USD") ? amount * 40 : amount / 40;
+    } else {
+      print("invalid currency code.");
+      return 0;
+    }
+  }
+
+///////////
+
+  stdout.write("Enter currency code (USD or EGP)=> ");
+  String? currencyCode = (stdin.readLineSync() ?? "invalid").toUpperCase();
+  stdout.write("Enter amount => ");
+  try {
+    int? amount = int.parse(stdin.readLineSync() ?? "0");
+    print(convertCurrency(amount: amount, code: currencyCode));
+  } catch (_) {
+    print("invalid");
+  }
+}
+
+validEmails() {
+  //  required function
+  bool isValidEmail({required String email}) {
+    if (email.contains("@gmail.com")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  stdout.write("Enter your Email=> ");
+  String email = stdin.readLineSync() ?? "invalid";
+
+  print(isValidEmail(email: email));
+}
+
+longestWords() {
+  //required function
+  String findLongestWord({required String words}) {
+    List<String> myWords = words.split(" ").toList();
+    String maxWord = "";
+    for (String word in myWords) {
+      if (word.length > maxWord.length) {
+        maxWord = word;
+      }
+    }
+    return maxWord;
+  }
+////////////
+
+  stdout.write("Enter your sentence => ");
+  String? sentence = stdin.readLineSync();
+  print(findLongestWord(words: sentence ?? ""));
 }
